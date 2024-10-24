@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>Sound Savvy</title>
+    <style>
+        .button {font-family: Trebuchet MS; width: 100px; height: 50px; font-size: 20px;}
+    </style>
+</head>
+<body bgcolor="#185177">
+    <h1>Sound Savvy</h1>
+    <div>
+        <p style="margin-bottom: 4px;">
+        <button onclick="textToSpeech('Hello')" class="button">Hello</button>
+        <button onclick="textToSpeech('How')" class="button">How</button>
+        <button onclick="textToSpeech('Are')" class="button">Are</button>
+        <button onclick="textToSpeech('You')" class="button">You</button>
+        <button onclick="textToSpeech('I')" class="button">I</button>
+        <button onclick="textToSpeech('Am')" class="button">Am</button>
+        <button onclick="textToSpeech('Doing')" class="button">Doing</button>
+        <button onclick="textToSpeech('Well')" class="button">Well</button>
+        <button onclick="textToSpeech('Want')" class="button">Want</button>
+        <button onclick="textToSpeech('Food')" class="button">Food</button>
+        <button onclick="textToSpeech('Goodbye')" class="button">Goodbye</button>
+        <button onclick="textToSpeech('Sorry')" class="button">Sorry</button>
+        <button onclick="textToSpeech('Yes')" class="button">Yes</button>
+        <button onclick="textToSpeech('No')" class="button">No</button>
+        </p>
+        <p style="margin-top: 4px;">
+        <button onclick="textToSpeech('Thanks')" class="button">Thanks</button>
+        <button onclick="textToSpeech('Sure')" class="button">Sure</button>
+        <button onclick="textToSpeech('Yay')" class="button">Yay</button>
+
+
+        </p>
+        <script>
+            function textToSpeech(text) {
+                let speech = new SpeechSynthesisUtterance();
+                speech.volume=1;
+                speech.text=text;
+                speech.rate=2
+                speech.pitch=1
+                window.speechSynthesis.speak(speech);
+            }
+        </script>
+    </div>
+</body>
+</html>
