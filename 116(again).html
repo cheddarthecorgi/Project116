@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sound Savvy</title>
     <style>
-        .button {font-family: Trebuchet MS; width: 100px; height: 50px; font-size: 20px;}
+        .button {font-family: Trebuchet MS; width: 117px; height: 50px; font-size: 20px;}
     </style>
 </head>
 <body bgcolor="#185177">
-    <h1>Sound Savvy</h1>
-    <div>
+    <h1 style="color: white; text-align: center;">Sound Savvy</h1>
+    <div id="buttons">
         <p style="margin-bottom: 4px;">
         <button onclick="textToSpeech('Hello')" class="button">Hello</button>
         <button onclick="textToSpeech('How')" class="button">How</button>
@@ -32,9 +32,19 @@
         <button onclick="textToSpeech('Thanks')" class="button">Thanks</button>
         <button onclick="textToSpeech('Sure')" class="button">Sure</button>
         <button onclick="textToSpeech('Yay')" class="button">Yay</button>
-
-
+        <button onclick="textToSpeech('Please')" class="button">Please</button>
+        <button onclick="textToSpeech('Like')" class="button">Like</button>
+        <button onclick="textToSpeech('Literally')" class="button">Literally</button>
+        <button onclick="textToSpeech('Stop')" class="button">Stop</button>
+        <button onclick="textToSpeech('Wait')" class="button">Wait</button>
+        <button onclick="textToSpeech('Go')" class="button">Go</button>
+        <button onclick="textToSpeech('Help')" class="button">Help</button>
+        <button onclick="textToSpeech('Seriously')" class="button">Seriously</button>
+        <button onclick="textToSpeech('Cool')" class="button">Cool</button>
+        <button onclick="textToSpeech('Alright')" class="button">Alright</button>
+        <button onclick="textToSpeech('Oops')" class="button">Oops</button>
         </p>
+    </div>
         <script>
             function textToSpeech(text) {
                 let speech = new SpeechSynthesisUtterance();
@@ -44,7 +54,19 @@
                 speech.pitch=1
                 window.speechSynthesis.speak(speech);
             }
+            function addButton() {
+            let inputText = document.getElementById("wordInput").value;
+            let button = document.createElement("button");
+            button.innerHTML = inputText;
+            button.onclick = function() {
+                let utterance = new SpeechSynthesisUtterance(inputText);
+                window.speechSynthesis.speak(utterance);
+            };
+            button.className = 'button';
+            document.getElementById("buttons").appendChild(button);
+            }
         </script>
-    </div>
+        <input type="text" id="wordInput" placeholder="Enter a word to create a custom button!" style="width: 50%; height: 25px;">
+        <button onclick="addButton()" style="width: 49%; height: 31px;">Add Custom Button</button>
 </body>
 </html>
