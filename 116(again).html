@@ -58,15 +58,19 @@
                 window.speechSynthesis.speak(speech);
             }
             function addButton() {
-            let inputText = document.getElementById("wordInput").value;
-            let button = document.createElement("button");
-            button.innerHTML = inputText;
-            button.onclick = function() {
-                let utterance = new SpeechSynthesisUtterance(inputText);
-                window.speechSynthesis.speak(utterance);
-            };
-            button.className = 'button';
-            document.getElementById("buttons").appendChild(button);
+                let inputText = document.getElementById("wordInput").value;
+                if (!/\s/.test(inputText) && inputText.trim().length > 0) {
+                    let button = document.createElement("button");
+                    button.innerHTML = inputText;
+                    button.onclick = function() {
+                        let utterance = new SpeechSynthesisUtterance(inputText);
+                        window.speechSynthesis.speak(utterance);
+                    };
+                button.className = 'button';
+                document.getElementById("buttons").appendChild(button);
+                } else {
+                    alert("Please enter a single word")
+                }
             }
         </script>
         <input type="text" id="wordInput" placeholder="Enter a word to create a custom button!" style="width: 50%; height: 25px;">
