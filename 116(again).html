@@ -7,6 +7,7 @@
     <title>Sound Savvy</title>
     <style>
         .button {font-family: Trebuchet MS; width: 117px; height: 50px; font-size: 20px;}
+        .custom-button {background-color: aqua}
         div {
             padding: 0%;
         }
@@ -47,6 +48,11 @@
         <button onclick="textToSpeech('Alright')" class="button">Alright</button>
         <button onclick="textToSpeech('Oops')" class="button">Oops</button>
         </p>
+        <input type="text" id="wordInput" placeholder="Enter a maximum 10 character word to create a custom button!" style="width: 50%; height: 25px; font-family: 'Trebuchet MS';" maxlength="10">
+        <bold>
+            <button onclick="addButton()" style="width: 49%; height: 31px; font-family: 'Trebuchet MS';">Add Custom Button</button>
+        </bold>
+        <p style="font-family: 'Trebuchet MS'; color: white; background-color: cadetblue; font-size: 20px; text-align: center;">Double click on your custom button to delete it!</p>
     </div>
         <script>
             function textToSpeech(text) {
@@ -66,17 +72,16 @@
                         let utterance = new SpeechSynthesisUtterance(inputText);
                         window.speechSynthesis.speak(utterance);
                     };
-                button.className = 'button';
+                button.className = 'button custom-button';
+                button.ondblclick = function(){
+                    this.parentElement.removeChild(this);
+                }
                 document.getElementById("buttons").appendChild(button);
                 } else {
                     alert("Please enter a single word")
                 }
             }
         </script>
-        <input type="text" id="wordInput" placeholder="Enter a maximum 10 character word to create a custom button!" style="width: 50%; height: 25px; font-family: 'Trebuchet MS';" maxlength="10">
-        <bold>
-            <button onclick="addButton()" style="width: 49%; height: 31px; font-family: 'Trebuchet MS';">Add Custom Button</button>
-        </bold>
     
 </body>
 </html>
